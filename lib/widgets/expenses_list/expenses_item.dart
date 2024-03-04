@@ -8,46 +8,66 @@ class ExpensesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Icon getIconByCategory(Category category) {
+    //   switch (category) {
+    //     case Category.food:
+    //       return const Icon(Icons.lunch_dining);
+    //     case Category.travel:
+    //       return const Icon(Icons.flight_takeoff);
+    //     case Category.leisure:
+    //       return const Icon(Icons.movie);
+    //     case Category.work:
+    //       return const Icon(Icons.work);
+    //     default:
+    //       return const Icon(Icons.lunch_dining);
+    //   }
+    // }
 
-    Icon getIconByCategory(Category category) {
-      switch (category) {
-        case Category.food:
-          return const Icon(Icons.food_bank);
-        case Category.travel:
-          return const Icon(Icons.travel_explore);
-        case Category.leisure:
-          return const Icon(Icons.local_activity);
-        case Category.work:
-          return const Icon(Icons.work);
-        default:
-          return const Icon(Icons.food_bank);
-      }
-    }
-    
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 16,
+      child: Container(
+          // color: const Color.fromARGB(255, 251, 218, 255),
+        decoration: const BoxDecoration(
+          // color: Color.fromARGB(255, 251, 218, 255),
+          borderRadius: BorderRadius.all(Radius.zero),
         ),
-        child: Column(
-          children: [
-            Text(expense.title),
-            const SizedBox(height: 4),
-            Row(
-              children: [
-                Text('\$${expense.amount.toStringAsFixed(2)}'),
-                const Spacer(),
-                Row(
-                  children: [
-                    const Icon(Icons.alarm),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 16,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(expense.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  )),
+              const SizedBox(height: 4),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    '\$${expense.amount.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Icon(categoryIcons[expense.category]),
                     const SizedBox(width: 8),
-                    Text(expense.date.toString()),
-                  ]
-                ),
-              ],
-            )
-          ],
+                    Text(
+                      expense.getFormattedDate,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ]),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
