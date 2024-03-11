@@ -25,7 +25,7 @@ class ExpensesItem extends StatelessWidget {
 
     return Card(
       child: Container(
-          // color: const Color.fromARGB(255, 251, 218, 255),
+        // color: const Color.fromARGB(255, 251, 218, 255),
         decoration: const BoxDecoration(
           // color: Color.fromARGB(255, 251, 218, 255),
           borderRadius: BorderRadius.all(Radius.zero),
@@ -38,11 +38,14 @@ class ExpensesItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(expense.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  )),
+              Text(
+                expense.title,
+                // style: const TextStyle(
+                //   fontWeight: FontWeight.bold,
+                //   fontSize: 15,
+                // ),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
               const SizedBox(height: 4),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
