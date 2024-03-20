@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:flutter_expense_tracker/widgets/expenses.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
@@ -11,7 +13,12 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 );
 
 void main() {
-  runApp(const MyApp());
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) {
+    runApp(const MyApp());
+  // });
 }
 
 class MyApp extends StatelessWidget {
@@ -23,14 +30,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         useMaterial3: true,
-        colorScheme: kDarkColorScheme,
-        // scaffoldBackgroundColor: const Color.fromARGB(255, 220, 189, 252),
-        // appBarTheme: const AppBarTheme().copyWith(
-        //   backgroundColor: kColorScheme.onPrimaryContainer,
-        //   foregroundColor: kColorScheme.primaryContainer,
-        // ),
+        colorScheme: kColorScheme,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 239, 231, 248),
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: kColorScheme.onPrimaryContainer,
+          foregroundColor: kColorScheme.primaryContainer,
+        ),
         cardTheme: const CardTheme().copyWith(
-          color: kDarkColorScheme.secondaryContainer,
+          color: kColorScheme.secondaryContainer,
           margin: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 8,
@@ -38,14 +45,14 @@ class MyApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: kDarkColorScheme.primaryContainer,
-            foregroundColor: kDarkColorScheme.onPrimaryContainer,
+            backgroundColor: kColorScheme.primaryContainer,
+            foregroundColor: kColorScheme.onPrimaryContainer,
           ),
         ),
         textTheme: ThemeData().textTheme.copyWith(
               titleLarge: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: kDarkColorScheme.onSecondaryContainer,
+                color: kColorScheme.onSecondaryContainer,
                 // color: Colors.red,
                 fontSize: 14,
               ),
